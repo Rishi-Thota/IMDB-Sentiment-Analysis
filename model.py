@@ -1,13 +1,10 @@
-# model.py - the actual LSTM architecture, nothing else lives here
  
 import torch
 import torch.nn as nn
  
  
 class ReviewClassifier(nn.Module):
-   # bidirectional LSTM -> dropout -> linear -> sigmoid
-   # we grab the last hidden state from both directions, cat them together,
-   # and squish that through a single output neuron to get a probability
+ 
  
    def __init__(
        self,
@@ -61,7 +58,6 @@ class ReviewClassifier(nn.Module):
 
 
 predict.py 
-# predict.py - run any review through the trained model and get a sentiment + confidence score
  
 import os
 import torch
@@ -71,9 +67,6 @@ from dataset import TokenMap, normalize_review, fix_lengths
 from model import SentimentLSTM
  
  
-# ---------------------------------------------------------------------------
-# Config - keep these in sync with whatever you used during training
-# ---------------------------------------------------------------------------
  
 VOCAB_FILE = os.path.join("models", "vocab.json")
 CKPT_FILE  = os.path.join("models", "best_model.pt")
